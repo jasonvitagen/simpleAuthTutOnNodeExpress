@@ -10,6 +10,13 @@ var users = require('./routes/users');
 
 var app = express();
 
+// Require Passport And Strategies
+var passport      = require('passport');
+var localStrategy = require('passport-local').Strategy;
+
+// Require Connect Flash
+var flash = require('connect-flash');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
