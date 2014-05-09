@@ -11,8 +11,7 @@ var users = require('./routes/users');
 var app = express();
 
 // Require Passport And Strategies
-var passport      = require('passport');
-var localStrategy = require('passport-local').Strategy;
+var passport = require('passport');
 
 // Require Connect Flash
 var flash = require('connect-flash');
