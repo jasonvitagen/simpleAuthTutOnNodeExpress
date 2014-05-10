@@ -11,15 +11,20 @@ var users = require('./routes/users');
 
 var app = express();
 
-// Setup Dependencies For Passport Auth Tut
+// Dependencies Required For Passport Auth Tut
 var passport = require('passport');
 var flash    = require('connect-flash');
 var mongoose = require('mongoose');
+var engine   = require('ejs-locals');
+
+// Use ejs-locals For All ejs Templates
+app.engine('ejs', engine);
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('view options', { layout: true });
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -28,7 +33,7 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Setup Middlewares For Passport Auth
+// Middlewares Required For Passport Auth
 app.use(session({ secret: 'iamcheng' }));
 app.use(passport.initialize());
 app.use(passport.session());
