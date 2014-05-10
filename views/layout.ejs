@@ -2,12 +2,18 @@
 
 <html>
 
-	<link ref="stylesheet" href="/stylesheets/bootstrap.min.css">
-	<%- stylesheets %>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="/stylesheets/gridism.css">
+		<%- stylesheets %>
+	</head>
 
-	<%- body %>
+	<body>
+		<div class="wrap">
+			<%- body %>
+		</div>
+	</body>
 
-	<script src="/javascripts/bootstrap.min.js"></script>
 	<%- scripts %>
 
 </html>
