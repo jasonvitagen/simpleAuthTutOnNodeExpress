@@ -5,12 +5,25 @@
 	<head>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="/stylesheets/gridism.css">
+		<link rel="stylesheet" href="/stylesheets/style.css">
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+
 		<%- stylesheets %>
 	</head>
 
 	<body>
 		<div class="wrap">
+
+			<div class="grid">
+				<div class="unit w-1-1">
+					<% if (typeof message == 'object' && message) { %>
+						<div><%= message %></div>
+					<% } %>
+				</div>
+			</div>
+
 			<%- body %>
+
 		</div>
 	</body>
 
