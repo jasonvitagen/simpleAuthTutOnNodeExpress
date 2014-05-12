@@ -26,6 +26,17 @@ module.exports = function (passport) {
 		failureFlash    : true
 	}));
 
+	// Facebook Login
+	router.get('/facebook-login', passport.authenticate('facebook', {
+		scope: 'email'
+	}));
+
+	// Facebook Callback
+	router.get('/facebook/callback', passport.authenticate('facebook', {
+		successRedirect: '/auth/profile',
+		failureRedirect: '/'
+	}));
+
 	// Profile
 	router.get('/profile', isLoggedIn, function (req, res) {
 		res.render('profile', { title: 'Profile', user: req.user });
