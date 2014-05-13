@@ -100,11 +100,10 @@ module.exports = function (passport) {
 					return done(null, user);
 				} else {
 					var newUser = new User();
-
-					newUser.facebook.id = profile.id;
+					
+					newUser.facebook.id    = profile.id;
 					newUser.facebook.token = token;
-					newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
-					console.log(profile.emails);
+					newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
 					newUser.facebook.email = profile.emails && profile.emails.length > 0 && profile.emails[0].value;
 
 					newUser.save(function (err) {
