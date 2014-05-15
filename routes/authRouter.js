@@ -28,11 +28,22 @@ module.exports = function (passport) {
 
 	// Facebook Login
 	router.get('/facebook-login', passport.authenticate('facebook', {
-		scope: 'email'
+		scope: 'emails'
 	}));
 
 	// Facebook Callback
 	router.get('/facebook/callback', passport.authenticate('facebook', {
+		successRedirect: '/auth/profile',
+		failureRedirect: '/'
+	}));
+
+	// Google Login
+	router.get('/google-login', passport.authenticate('google', {
+		scope: ['emails', 'profile']
+	}));
+
+	// Google Callback
+	router.get('/google/callback', passport.authenticate('google', {
 		successRedirect: '/auth/profile',
 		failureRedirect: '/'
 	}));
