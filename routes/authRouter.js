@@ -26,9 +26,21 @@ module.exports = function (passport) {
 		failureFlash    : true
 	}));
 
+	// Local Connect
+	router.get('/connect/local', function (req, res) {
+		res.render('local-connect', { title: 'Local Connect', message: req.flash('message') });
+	});
+
+	router.post('/connect/local', passport.authenticate('local-signup', {
+		successRedirect : '/auth/profile',
+		failureRedirect : '/',
+		failureFlash    : true
+	}));
+
+
 	// Facebook Login
 	router.get('/facebook-login', passport.authenticate('facebook', {
-		scope: 'emails'
+		scope: 'email'
 	}));
 
 	// Facebook Callback
@@ -37,9 +49,18 @@ module.exports = function (passport) {
 		failureRedirect: '/'
 	}));
 
+	// Facebook Connect
+	router.get('/connect/facebook/', passport.authorize('facebook', { scope: 'email' }));
+
+	// Facebook Connect Callback
+	router.get('connect/facebook/callback', passport.authorize('facebook', {
+		successRedirect: '/auth/profile',
+		failureRedirect: '/'
+	}));
+
 	// Google Login
 	router.get('/google-login', passport.authenticate('google', {
-		scope: ['emails', 'profile']
+		scope: ['email', 'profile']
 	}));
 
 	// Google Callback
